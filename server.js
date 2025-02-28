@@ -4,7 +4,6 @@ import bcrypt from 'bcryptjs';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import cron from 'node-cron'
-import ServerlessHttp from 'serverless-http';
 import {WebSocketServer} from 'ws'; // Pour gérer les WebSockets
 import supabase from './supabase.js';
 dotenv.config();
@@ -254,4 +253,3 @@ wss.on('connection', (ws) => {
   });
 });
 
-export const handler = ServerlessHttp(app);
