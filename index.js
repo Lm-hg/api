@@ -58,10 +58,12 @@ app.get('/all', async(req,res)=>{
     let { data: users, error } = await supabase
     .from('users')
     .select('username');
-    res.send(users)
     
 })
-
+app.get('/', async(req,res)=>{
+  res.send('Konnichiwa');
+  
+})
 // Route de connexion
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
@@ -252,4 +254,3 @@ wss.on('connection', (ws) => {
     clients = clients.filter(client => client !== ws);
   });
 });
-
