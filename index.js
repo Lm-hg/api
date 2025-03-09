@@ -218,10 +218,10 @@ cron.schedule('0 0 * * *', async () => {
   res.status(200).json({ messages });
 });
 
-// // Créer un serveur WebSocket attaché au serveur HTTP
-// const server = app.listen(5000, () => {
-//   console.log(`Serveur HTTP démarré sur http://localhost:${port}`);
-// });
+// Créer un serveur WebSocket attaché au serveur HTTP
+ app.listen(5000, () => {
+  console.log(`Serveur HTTP démarré sur http://localhost:${port}`);
+});
 
 // // Créer le serveur WebSocket
 // const wss = new WebSocketServer({ server });
