@@ -218,39 +218,39 @@ cron.schedule('0 0 * * *', async () => {
   res.status(200).json({ messages });
 });
 
-// Créer un serveur WebSocket attaché au serveur HTTP
-const server = app.listen(5000, () => {
-  console.log(`Serveur HTTP démarré sur http://localhost:${port}`);
-});
+// // Créer un serveur WebSocket attaché au serveur HTTP
+// const server = app.listen(5000, () => {
+//   console.log(`Serveur HTTP démarré sur http://localhost:${port}`);
+// });
 
-// Créer le serveur WebSocket
-const wss = new WebSocketServer({ server });
+// // Créer le serveur WebSocket
+// const wss = new WebSocketServer({ server });
 
-// Liste pour stocker les WebSocket des clients connectés
-let clients = [];
+// // Liste pour stocker les WebSocket des clients connectés
+// let clients = [];
 
-// Quand un client se connecte via WebSocket
-wss.on('connection', (ws) => {
-  console.log('Un client est connecté');
-  clients.push(ws); // Ajouter ce client à la liste des clients
+// // Quand un client se connecte via WebSocket
+// wss.on('connection', (ws) => {
+//   console.log('Un client est connecté');
+//   clients.push(ws); // Ajouter ce client à la liste des clients
 
-  // Quand le client envoie un message
-  ws.on('message', (message) => {
-    console.log('Message reçu :', message);
+//   // Quand le client envoie un message
+//   ws.on('message', (message) => {
+//     console.log('Message reçu :', message);
 
-    // Envoyer ce message à tous les autres clients connectés
-    clients.forEach(client => {
-      if (client.readyState === WebSocket.OPEN) {
-        console.log('Envoi du message à un client:', message);
-        client.send(message);
-      }
-    });
+//     // Envoyer ce message à tous les autres clients connectés
+//     clients.forEach(client => {
+//       if (client.readyState === WebSocket.OPEN) {
+//         console.log('Envoi du message à un client:', message);
+//         client.send(message);
+//       }
+//     });
     
-  });
+//   });
 
-  // Gérer la déconnexion du client
-  ws.on('close', () => {
-    console.log('Un client s\'est déconnecté');
-    clients = clients.filter(client => client !== ws);
-  });
-});
+//   // Gérer la déconnexion du client
+//   ws.on('close', () => {
+//     console.log('Un client s\'est déconnecté');
+//     clients = clients.filter(client => client !== ws);
+//   });
+// });
